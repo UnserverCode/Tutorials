@@ -4,7 +4,7 @@ to a PLC.
 
 ![Sample Web HMI with two control buttons](https://s3.amazonaws.com/unserver-blog-media/hmi-with-unserver-buttons/web-page.png)
 
-The full code for this article is available on github.
+The full [full code for this article](https://github.com/UnserverCode/Tutorials/blob/master/basic-buttons) is available on Github.
 
 ## Prerequisites
 
@@ -68,7 +68,7 @@ Here is how to write a property using unserver.js:
     // write a property - set 'startLine' to 'true'
     unserver.setProperty('lineControl.startLine', true)
 
-The library itself is freely availabe on [github](https://github.com/UnserverCode/unserverjs).
+The library itself is freely availabe on [Github/UnserverCode](https://github.com/UnserverCode/unserverjs).
 
 ### Create HTML page
 This code will show the current status based on `isRunning` property of our app:
@@ -91,6 +91,8 @@ The 'Stop' button triggers the `stop` method of the app and is disabled when `is
 
 The code below combines all elements together:
 
+[index.html](https://github.com/UnserverCode/Tutorials/blob/master/basic-buttons/index.html)
+
     <div id="root">
             <div class="title">
                 <h1>Status: {{isRunning ? 'Started': 'Stopped'}}</h1>
@@ -112,3 +114,26 @@ The code below combines all elements together:
     </div>
 
 ### Javascript
+
+To handle button press events we define `start` and `stop` methods in our Vue app.
+Those methods will be automatically bound to buttons we have defined ealier in `index.html`.
+
+from [index.js](https://github.com/UnserverCode/Tutorials/blob/master/basic-buttons/index.js):
+
+    methods:{
+        start: function(){
+            unserver.setProperty('line-control.start', true);
+        },
+        stop: function(){
+            unserver.setProperty('line-control.stop', true);
+        }
+    }
+
+To update the status bar, we will subscribe to `line-control.running` property. 
+In the callback we update `isRunning` property of our Vue app, which is bound to the status bar.
+
+from [index.js](https://github.com/UnserverCode/Tutorials/blob/master/basic-buttons/index.js):
+
+    unserver.watchProperty('line-state.running', function(value){
+        self.isRunning = value;
+    });
