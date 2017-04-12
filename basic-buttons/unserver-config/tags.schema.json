@@ -1,0 +1,79 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "properties": {
+      "name": { "type": "string" },
+      "device": { "type": "string" },
+      "cache": {
+        "oneOf": [
+          {
+            "type": "object",
+            "properties": {
+              "enabled": {
+                "type": "boolean",
+                "enum": [ false ]
+              }
+            },
+            "required": [ "enabled" ]
+          },
+          {
+            "type": "object",
+            "properties": {
+              "enabled": {
+                "type": "boolean",
+                "enum": [ true ]
+              },
+              "TTL": { "type": "integer" }
+            },
+            "required": [ "enabled", "TTL" ]
+          }
+        ]
+      },
+      "polling": {
+        "oneOf": [
+          {
+            "type": "object",
+            "properties": {
+              "enabled": {
+                "type": "boolean",
+                "enum": [ true ]
+              },
+              "frequency": {
+                "type": "integer"
+              }
+            },
+            "required": [ "enabled", "frequency" ]
+          },
+          {
+            "type": "object",
+            "properties": {
+              "enabled": {
+                "type": "boolean",
+                "enum": [ false ]
+              }
+            },
+            "required": [ "enabled" ]
+          }
+        ]
+      },
+      "properties": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "name": { "type": "string" },
+            "address": {
+                  "type": "string"
+            },
+            "type": { "type": "string", "enum": ["numeric", "bool"] },
+            "raw": { "type": "string", "enum": ["int16", "uint16", "int32", "uint32", "float32", "bcd16", "bool"] }
+          },
+          "required": ["address", "name", "type", "raw"]
+        }
+      }
+    },
+    "required": ["name", "device", "properties"]
+  }
+}

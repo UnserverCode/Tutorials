@@ -1,0 +1,16 @@
+body{
+    background-color: #FFF;
+    font-weight: 200;
+    color: #444
+}
+h1,h2,h3,h4{
+    font-weight: 400;
+}
+
+.title{
+    text-align: center;
+}
+
+.pull-down{
+   margin-top: 7rem; 
+}

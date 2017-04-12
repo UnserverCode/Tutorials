@@ -1,0 +1,17 @@
+[
+    { 
+        "name": "line-control", "device": "plc1", 
+        "properties": [
+            { "name": "start", "address":"C0", "type": "bool", "raw": "bool" },
+            { "name": "stop", "address":"C1", "type": "bool", "raw": "bool" }
+        ]
+    },
+    {
+        "name": "line-state", "device": "plc1",
+        "polling": {"enabled":"true", "frequency": 2 },
+        "properties": [
+            { "name": "running" ,"address": "C10", "type": "bool", "raw": "bool" }
+        ]
+    }
+
+]
