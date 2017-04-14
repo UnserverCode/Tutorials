@@ -1,0 +1,10 @@
+[
+    { 
+        "name": "tank-levels", "device": "plc1", 
+        "polling": {"enabled":true, "frequency": 2 },
+        "properties": [
+            { "name": "tank1", "address":"HR200", "type": "numeric", "raw": "float32" },
+            { "name": "tank2", "address":"HR202", "type": "numeric", "raw": "float32" }
+        ]
+    }
+]

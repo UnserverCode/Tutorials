@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="./lib/pure-min.css"/>
+<!--[if lte IE 8]>
+    <link rel="stylesheet" href="lib/grids-responsive-old-ie-min.css">
+<![endif]-->
+<!--[if gt IE 8]><!-->
+    <link rel="stylesheet" href="./lib/grids-responsive-min.css">
+<!--<![endif]-->
+
+    <link rel="stylesheet" href="./lib/chartist.min.css">
+    <link rel="stylesheet" href="index.css">
+    <title>Unserver Tutorial - Level Indicators</title>
+</head>
+<body>
+
+<div class="pull-down">
+
+<div class="pure-u-2-5"></div>
+<div class="pure-u-1-5">
+    <div class="center"><h2>TANK LEVELS</h2></div>
+    <div class="pure-g" id="root">
+        <div class="pure-u-1-2 center">
+            <indicator v-bind:value="tank1"></indicator>
+            <div>Tank 1</div>
+        </div>
+        <div class="pure-u-1-2 center">
+            <indicator v-bind:value="tank2"></indicator>
+            <div>Tank 2</div>
+        </div>
+    <div>
+</div>
+<div class="pure-u-2-5"></div>
+
+</div>
+
+<script src="./lib/chartist.min.js"></script>
+<script src="./lib/vue.min.js"></script>
+<script src="./lib/unserver.js"></script>
+<script src="index.js"></script>
+</body>
+</html>
